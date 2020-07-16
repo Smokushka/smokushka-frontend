@@ -1,0 +1,9 @@
+<pre *ngIf="auth.userProfile$ | async as profile">
+    <code>{{ profile | json }}</code>
+</pre>
+
+<section *ngIf="auth.userProfile$ | async as profile">
+    <img src="{{ profile.picture }}" alt="{{ profile.name }}">
+    <h2>{{ profile.given_name }}</h2>
+    <h1>{{ profile.family_name }}</h1>
+</section>
