@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     NoopAnimationsModule,
     MatCardModule,
     MatButtonModule,
+    MatTableModule,
     GraphQLModule,
     HttpClientModule
   ],

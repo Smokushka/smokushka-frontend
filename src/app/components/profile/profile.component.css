@@ -7,3 +7,15 @@
     /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
     background-size: cover;
   }
+  .mat-column-amount {
+    display:flex;
+    justify-content: flex-end;
+  }
+  .mat-column-name {
+    flex: 4;
+    display:flex;
+    justify-content: flex-start;
+  }
+  table {
+    width: 100%;
+  }

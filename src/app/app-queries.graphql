@@ -1,0 +1,18 @@
+query salesforce_opportunity_portal_users {
+    salesforce_opportunity_portal_users {
+        createddate
+        name
+        amount
+        stagename
+        portal_user_heroku_connect_id__c
+    }
+}
+subscription salesforce_opportunity_portal_usersSub {
+    salesforce_opportunity_portal_users {
+        createddate
+        name
+        amount
+        stagename
+        portal_user_heroku_connect_id__c
+    }
+}

@@ -14,7 +14,8 @@ export class AuthService {
     createAuth0Client({
       domain: "smokushka.us.auth0.com",
       client_id: "UGWtP945QzciiEPO9nuDSdwZgFYWvqrB",
-      redirect_uri: `${window.location.origin}`
+      redirect_uri: `${window.location.origin}`,
+      audience: "https://smokushka.herokuapp.com/v1/graphql"
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
@@ -51,6 +52,13 @@ export class AuthService {
     return this.auth0Client$.pipe(
       concatMap((client: Auth0Client) => from(client.getUser(options))),
       tap(user => this.userProfileSubject$.next(user))
+    );
+  }
+  
+  // Getting Token from Auth0
+  getTokenSilently$(options?): Observable<string> {
+    return this.auth0Client$.pipe(
+      concatMap((client: Auth0Client) => from(client.getTokenSilently(options)))
     );
   }
 
@@ -122,5 +130,6 @@ export class AuthService {
       });
     });
   }
+
 
 }
