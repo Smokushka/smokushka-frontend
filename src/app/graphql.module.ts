@@ -67,45 +67,45 @@ import { Observable } from 'rxjs';
   // ],
 })
 export class GraphQLModule {
-  token: String;
-  constructor(apollo: Apollo, httpLink: HttpLink, private auth: AuthService) {
+  // token: String;
+  // constructor(apollo: Apollo, httpLink: HttpLink, private auth: AuthService) {
   
-    const wsUri = 'wss://smokushka.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here
+  //   const wsUri = 'wss://smokushka.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here
     
-    const token2 = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkUtUkZMdVV6NlVIbzlQMG5DYjFieSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6Imdvb2dsZS1vYXV0aDJ8MTA2NjA3MDk3NTE3MzIzNjY4OTcyIn0sImdpdmVuX25hbWUiOiJBbGVrc2FuZHIiLCJmYW1pbHlfbmFtZSI6IlNoYWJhbm92Iiwibmlja25hbWUiOiJzbW9rdXNoa2EiLCJuYW1lIjoiQWxla3NhbmRyIFNoYWJhbm92IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdpRTlzRUdKbm5aUkF3RkZ2R3dzX1lINEZaMGtNaExPYnZhLVI4cHpBIiwibG9jYWxlIjoiZW4tR0IiLCJ1cGRhdGVkX2F0IjoiMjAyMC0wNy0yMVQxNDoyNDoxMy42MjFaIiwiaXNzIjoiaHR0cHM6Ly9zbW9rdXNoa2EudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2NjA3MDk3NTE3MzIzNjY4OTcyIiwiYXVkIjoiVUdXdFA5NDVRemNpaUVQTzludURTZHdaZ0ZZV3ZxckIiLCJpYXQiOjE1OTUzNDE0NTMsImV4cCI6MTU5NTM3NzQ1MywiYXRfaGFzaCI6InhSSUtUYmVFV2FRSU5JNUJ3WlBDVUEiLCJub25jZSI6ImFKS1lHY2lMTkFSM0xIckNJNEVKUTJtcXhVX1VyZVlLIn0.Vmd4Q3ERd6ZukVmMw0FNo1GIrtO1Dj5MfinSohp0zNSh6az3iuYMmTKtFmg-gXb96fd0IAxRL4_2my6oQckje4SNqu3KSwTcouOhnrFtxk9A_iaj8M96hYOjzaMGP7v3S6tujVWdlxLeJkKcwpJ5cZq0Sw5hJAC38YucMu0oAGuVYvLGuOVWu3x00bD9G-u0R7E3jBbluCnZJb-PnQz2KsehYw9ccA_j1WLLxCkNarYdYQgyl0EWtlizPe_NfzM4BOBYHcN8UegIeV3sXh2LSRvqciSlZJam3dOflw0VsnG699P7KzhjZ_cHYEjHdjvTHcEuiC_GVc0LPrO61pyWmQ';
+  //   const token2 = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkUtUkZMdVV6NlVIbzlQMG5DYjFieSJ9.eyJodHRwczovL2hhc3VyYS5pby9qd3QvY2xhaW1zIjp7IngtaGFzdXJhLWRlZmF1bHQtcm9sZSI6InVzZXIiLCJ4LWhhc3VyYS1hbGxvd2VkLXJvbGVzIjpbInVzZXIiXSwieC1oYXN1cmEtdXNlci1pZCI6Imdvb2dsZS1vYXV0aDJ8MTA2NjA3MDk3NTE3MzIzNjY4OTcyIn0sImdpdmVuX25hbWUiOiJBbGVrc2FuZHIiLCJmYW1pbHlfbmFtZSI6IlNoYWJhbm92Iiwibmlja25hbWUiOiJzbW9rdXNoa2EiLCJuYW1lIjoiQWxla3NhbmRyIFNoYWJhbm92IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hLS9BT2gxNEdpRTlzRUdKbm5aUkF3RkZ2R3dzX1lINEZaMGtNaExPYnZhLVI4cHpBIiwibG9jYWxlIjoiZW4tR0IiLCJ1cGRhdGVkX2F0IjoiMjAyMC0wNy0yMVQxNDoyNDoxMy42MjFaIiwiaXNzIjoiaHR0cHM6Ly9zbW9rdXNoa2EudXMuYXV0aDAuY29tLyIsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTA2NjA3MDk3NTE3MzIzNjY4OTcyIiwiYXVkIjoiVUdXdFA5NDVRemNpaUVQTzludURTZHdaZ0ZZV3ZxckIiLCJpYXQiOjE1OTUzNDE0NTMsImV4cCI6MTU5NTM3NzQ1MywiYXRfaGFzaCI6InhSSUtUYmVFV2FRSU5JNUJ3WlBDVUEiLCJub25jZSI6ImFKS1lHY2lMTkFSM0xIckNJNEVKUTJtcXhVX1VyZVlLIn0.Vmd4Q3ERd6ZukVmMw0FNo1GIrtO1Dj5MfinSohp0zNSh6az3iuYMmTKtFmg-gXb96fd0IAxRL4_2my6oQckje4SNqu3KSwTcouOhnrFtxk9A_iaj8M96hYOjzaMGP7v3S6tujVWdlxLeJkKcwpJ5cZq0Sw5hJAC38YucMu0oAGuVYvLGuOVWu3x00bD9G-u0R7E3jBbluCnZJb-PnQz2KsehYw9ccA_j1WLLxCkNarYdYQgyl0EWtlizPe_NfzM4BOBYHcN8UegIeV3sXh2LSRvqciSlZJam3dOflw0VsnG699P7KzhjZ_cHYEjHdjvTHcEuiC_GVc0LPrO61pyWmQ';
 
-        const authorization = this.token ? `Bearer ${token2}` : null;
-        const headers = new HttpHeaders().append('Authorization', authorization);
-        const uri = 'https://smokushka.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here
-        const http = httpLink.create({ uri, headers });
+  //       const authorization = this.token ? `Bearer ${token2}` : null;
+  //       const headers = new HttpHeaders().append('Authorization', authorization);
+  //       const uri = 'https://smokushka.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here
+  //       const http = httpLink.create({ uri, headers });
     
-        const ws = new WebSocketLink({
-          uri: wsUri,
-          options: {
-            reconnect: true,
-            connectionParams: {
-              headers: {
-                Authorization: `Bearer ${token2}`
-              }
-            }
-          }
-        });
+  //       const ws = new WebSocketLink({
+  //         uri: wsUri,
+  //         options: {
+  //           reconnect: true,
+  //           connectionParams: {
+  //             headers: {
+  //               Authorization: `Bearer ${token2}`
+  //             }
+  //           }
+  //         }
+  //       });
     
-        // create Apollo
-        console.log(ws);
-        apollo.create({
-          link: ApolloLink.split(
-            operation => {
-              const operationAST = getOperationAST(operation.query, operation.operationName);
-              return !!operationAST && operationAST.operation === 'subscription';
-            },
-            ws,
-            http,
-          ),
-          cache: new InMemoryCache()
-        });
+  //       // create Apollo
+  //       console.log(ws);
+  //       apollo.create({
+  //         link: ApolloLink.split(
+  //           operation => {
+  //             const operationAST = getOperationAST(operation.query, operation.operationName);
+  //             return !!operationAST && operationAST.operation === 'subscription';
+  //           },
+  //           ws,
+  //           http,
+  //         ),
+  //         cache: new InMemoryCache()
+  //       });
 
 
   
-  }
+  // }
 }
