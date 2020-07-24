@@ -308,13 +308,14 @@
         </mat-card-header>
         <!-- <img mat-card-image src="{{ profile.picture }}" alt="Photo of a Shiba Inu"> -->
         <mat-card-content>
+          {{profile.user_id}}
           <p>
             Here can be any information related to the user. Next just a random text. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti excepturi voluptatibus iure nisi? Corporis, odio, nam temporibus consectetur non maiores maxime labore ex, quidem accusantium illum dolorum ullam aperiam dolor.
           </p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button (click)="getPortalOpportunities()">Show Opportunities</button>
-          <button mat-button (click)="refreshOpportunities()">Refresh</button>
+          <!-- <button mat-button (click)="refreshOpportunities()">Refresh</button> -->
         </mat-card-actions>
     </mat-card>
     <section *ngIf="error">
@@ -333,6 +334,11 @@
         <p>{{opportunity.name}}</p>
         <p></p>
       </div> -->
+      <!-- New Opportunity Button -->
+      <section class="buttons-section">
+        <button mat-raised-button color="primary" (click)="onNewHandler()">New</button>
+      </section>
+
       <!-- Table with Opportunities -->
       <mat-table #opportunitiesTable [dataSource]="opportunities$" class="mat-elevation-z8">
         <!-- Position Column -->
@@ -346,6 +352,30 @@
           <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
           <mat-cell *matCellDef="let opportunity"> {{opportunity.amount | currency}} </mat-cell>
         </ng-container>
+
+        <!-- Edit Button Column -->
+        <ng-container matColumnDef="edit">
+          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <mat-cell *matCellDef="let opportunity">
+            <!-- <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="openOpportunityEditDialog(opportunity.heroku_connect_id__c)">
+              <mat-icon>create</mat-icon>
+            </button> -->
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="openOpportunityEditDialog(opportunity.heroku_connect_id__c)">
+                <mat-icon>create</mat-icon>
+                <span>Edit</span>
+              </button>
+              <button mat-menu-item (click)="onDeleteHandler(opportunity.heroku_connect_id__c)">
+                <mat-icon>delete</mat-icon>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </mat-cell>
+        </ng-container>
+        
       
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

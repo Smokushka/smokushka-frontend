@@ -11,13 +11,23 @@ import {MatButtonModule} from '@angular/material/button';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
-
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { OpportunityEditDialogComponent } from './components/opportunity-edit-dialog/opportunity-edit-dialog.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    ProfileComponent
+    ProfileComponent,
+    OpportunityEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -27,9 +37,20 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatTableModule,
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

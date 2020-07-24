@@ -13,6 +13,7 @@ subscription salesforce_opportunity_portal_usersSub {
         name
         amount
         stagename
+        heroku_connect_id__c
         portal_user_heroku_connect_id__c
     }
 }

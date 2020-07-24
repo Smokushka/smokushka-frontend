@@ -1,0 +1,31 @@
+mutation updateOpportunity($id: String!, $name: String, $amount: float8!){
+    update_salesforce_opportunity_portal_users (
+        where: {
+            heroku_connect_id__c : {
+            _eq: $id
+        }
+    }
+    _set: {
+        name: $name
+        amount: $amount
+    }) {
+        returning {
+        name
+        amount
+        }
+    }
+
+}
+mutation insertOpportunity($userId: String!,$id: String!,$name: String!, $stagename: String!,$closedate: date!,$amount: float8){
+  insert_salesforce_opportunity_one (object: {
+    name: $name
+    amount: $amount
+    stagename: $stagename
+    closedate: $closedate
+    heroku_connect_id__c: $id
+    portal_user_heroku_connect_id__c: $userId
+  }) {
+    name
+    amount
+  }
+}

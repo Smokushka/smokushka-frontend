@@ -9,13 +9,30 @@
   }
   .mat-column-amount {
     display:flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    padding-left: 10px;
+    padding-right: 10px;
   }
+  .mat-column-edit {
+    display:flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+    padding-right: 10px;
+
+  }
+
   .mat-column-name {
     flex: 4;
     display:flex;
     justify-content: flex-start;
+    text-align: left;
   }
   table {
     width: 100%;
   }
+.buttons-section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}

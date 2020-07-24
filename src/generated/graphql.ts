@@ -1593,7 +1593,83 @@ export type Salesforce_Opportunity_Portal_UsersSubSubscription = (
   { __typename?: 'subscription_root' }
   & { salesforce_opportunity_portal_users: Array<(
     { __typename?: 'salesforce_opportunity_portal_users' }
-    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'portal_user_heroku_connect_id__c'>
+    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'heroku_connect_id__c' | 'portal_user_heroku_connect_id__c'>
+  )> }
+);
+
+export type UpdateOpportunityMutationVariables = Exact<{
+  id: Scalars['String'];
+  name?: Maybe<Scalars['String']>;
+  amount: Scalars['float8'];
+}>;
+
+
+export type UpdateOpportunityMutation = (
+  { __typename?: 'mutation_root' }
+  & { update_salesforce_opportunity_portal_users?: Maybe<(
+    { __typename?: 'salesforce_opportunity_portal_users_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'salesforce_opportunity_portal_users' }
+      & Pick<Salesforce_Opportunity_Portal_Users, 'name' | 'amount'>
+    )> }
+  )> }
+);
+
+export type InsertOpportunityMutationVariables = Exact<{
+  userId: Scalars['String'];
+  id: Scalars['String'];
+  name: Scalars['String'];
+  stagename: Scalars['String'];
+  closedate: Scalars['date'];
+  amount?: Maybe<Scalars['float8']>;
+}>;
+
+
+export type InsertOpportunityMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_salesforce_opportunity_one?: Maybe<(
+    { __typename?: 'salesforce_opportunity' }
+    & Pick<Salesforce_Opportunity, 'name' | 'amount'>
+  )> }
+);
+
+export type OpportunityQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type OpportunityQuery = (
+  { __typename?: 'query_root' }
+  & { salesforce_opportunity_portal_users: Array<(
+    { __typename?: 'salesforce_opportunity_portal_users' }
+    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'heroku_connect_id__c' | 'portal_user_heroku_connect_id__c'>
+  )> }
+);
+
+export type DeleteOpportunityMutationVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type DeleteOpportunityMutation = (
+  { __typename?: 'mutation_root' }
+  & { delete_salesforce_opportunity_portal_users?: Maybe<(
+    { __typename?: 'salesforce_opportunity_portal_users_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'salesforce_opportunity_portal_users' }
+      & Pick<Salesforce_Opportunity_Portal_Users, 'name' | 'amount'>
+    )> }
+  )> }
+);
+
+export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CurrentUserQuery = (
+  { __typename?: 'query_root' }
+  & { salesforce_portal_user__c: Array<(
+    { __typename?: 'salesforce_portal_user__c' }
+    & Pick<Salesforce_Portal_User__C, 'name' | 'email__c' | 'heroku_connect_id__c'>
   )> }
 );
 
@@ -1623,6 +1699,7 @@ export const Salesforce_Opportunity_Portal_UsersSubDocument = gql`
     name
     amount
     stagename
+    heroku_connect_id__c
     portal_user_heroku_connect_id__c
   }
 }
@@ -1633,5 +1710,94 @@ export const Salesforce_Opportunity_Portal_UsersSubDocument = gql`
   })
   export class Salesforce_Opportunity_Portal_UsersSubGQL extends Apollo.Subscription<Salesforce_Opportunity_Portal_UsersSubSubscription, Salesforce_Opportunity_Portal_UsersSubSubscriptionVariables> {
     document = Salesforce_Opportunity_Portal_UsersSubDocument;
+    
+  }
+export const UpdateOpportunityDocument = gql`
+    mutation updateOpportunity($id: String!, $name: String, $amount: float8!) {
+  update_salesforce_opportunity_portal_users(where: {heroku_connect_id__c: {_eq: $id}}, _set: {name: $name, amount: $amount}) {
+    returning {
+      name
+      amount
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class UpdateOpportunityGQL extends Apollo.Mutation<UpdateOpportunityMutation, UpdateOpportunityMutationVariables> {
+    document = UpdateOpportunityDocument;
+    
+  }
+export const InsertOpportunityDocument = gql`
+    mutation insertOpportunity($userId: String!, $id: String!, $name: String!, $stagename: String!, $closedate: date!, $amount: float8) {
+  insert_salesforce_opportunity_one(object: {name: $name, amount: $amount, stagename: $stagename, closedate: $closedate, heroku_connect_id__c: $id, portal_user_heroku_connect_id__c: $userId}) {
+    name
+    amount
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class InsertOpportunityGQL extends Apollo.Mutation<InsertOpportunityMutation, InsertOpportunityMutationVariables> {
+    document = InsertOpportunityDocument;
+    
+  }
+export const OpportunityDocument = gql`
+    query opportunity($id: String!) {
+  salesforce_opportunity_portal_users(where: {heroku_connect_id__c: {_eq: $id}}) {
+    createddate
+    name
+    amount
+    stagename
+    heroku_connect_id__c
+    portal_user_heroku_connect_id__c
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class OpportunityGQL extends Apollo.Query<OpportunityQuery, OpportunityQueryVariables> {
+    document = OpportunityDocument;
+    
+  }
+export const DeleteOpportunityDocument = gql`
+    mutation deleteOpportunity($id: String!) {
+  delete_salesforce_opportunity_portal_users(where: {heroku_connect_id__c: {_eq: $id}}) {
+    returning {
+      name
+      amount
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class DeleteOpportunityGQL extends Apollo.Mutation<DeleteOpportunityMutation, DeleteOpportunityMutationVariables> {
+    document = DeleteOpportunityDocument;
+    
+  }
+export const CurrentUserDocument = gql`
+    query currentUser {
+  salesforce_portal_user__c {
+    name
+    email__c
+    heroku_connect_id__c
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CurrentUserGQL extends Apollo.Query<CurrentUserQuery, CurrentUserQueryVariables> {
+    document = CurrentUserDocument;
     
   }

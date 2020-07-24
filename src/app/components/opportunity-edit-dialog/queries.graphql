@@ -1,0 +1,16 @@
+query opportunity($id: String!) {
+    salesforce_opportunity_portal_users (
+        where: {
+            heroku_connect_id__c: {
+                _eq: $id
+            }
+        }
+    ) {
+        createddate
+        name
+        amount
+        stagename
+        heroku_connect_id__c
+        portal_user_heroku_connect_id__c
+    }
+}

@@ -1,0 +1,14 @@
+mutation deleteOpportunity($id: String!){
+  delete_salesforce_opportunity_portal_users (
+    where: {
+    	heroku_connect_id__c : {
+    	_eq: $id
+  	}
+  }
+) {
+    returning {
+      name
+      amount
+    }
+  }
+}
