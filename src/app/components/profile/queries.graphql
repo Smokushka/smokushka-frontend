@@ -10,6 +10,7 @@ query salesforce_opportunity_portal_users {
 subscription salesforce_opportunity_portal_usersSub {
     salesforce_opportunity_portal_users {
         createddate
+        closedate
         name
         amount
         stagename

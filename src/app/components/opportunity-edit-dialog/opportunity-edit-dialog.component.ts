@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 import { newArray } from '@angular/compiler/src/util';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { CurrentUserService } from 'src/app/services/current-user.service'
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-
+import { v4 as uuidv4 } from 'uuid';
 // 2
 export const query = gql`
   query salesforce_opportunity_portal_users {
@@ -31,9 +31,11 @@ export interface CurrentUser {
   heroku_connect_id__c: string
 }
 
-interface opportunity {
+interface Opportunity {
     name: String
     amount: Number
+    stagename: String
+    closedate: Date
 }
 interface OpportunityStages {
   value: string;
@@ -49,14 +51,20 @@ export class OpportunityEditDialogComponent implements OnInit {
   events: string[] = [];
   opportunityStages: OpportunityStages[] = [
     {value: 'Prospecting', viewValue: 'Prospecting'},
-    {value: 'Quaification', viewValue: 'Quaification'},
+    {value: 'Qualification', viewValue: 'Qualification'},
     {value: 'Needs Analysis', viewValue: 'Needs Analysis'},
     {value: 'Value Proposition', viewValue: 'Value Proposition'},
+    {value: 'Id. Decision Makers', viewValue: 'Id. Decision Makers'},
+    {value: 'Perception Analysis', viewValue: 'Perception Analysis'},
+    {value: 'Proposal/Price Quote', viewValue: 'Proposal/Price Quote'},
+    {value: 'Negotiation/Review', viewValue: 'Negotiation/Review'},
+    {value: 'Closed Won', viewValue: 'Closed Won'},
+    {value: 'Closed Lost', viewValue: 'Closed Lost'},
 
   ];
   displayedColumns: string[] = ['name', 'amount'];
 
-  opps: opportunity[] = [];
+  opps: Opportunity[] = [];
   userId: string = '';
   opportunities$: Observable<Salesforce_Opportunity_Portal_Users[]>;
   queryRef: QueryRef<any>;
@@ -66,10 +74,10 @@ export class OpportunityEditDialogComponent implements OnInit {
     heroku_connect_id__c: ''
   };
   editOpportunityForm = this.fb.group({
-    name: [''],
-    amount: [''],
-    stagename: [''],
-    closedate: ['']
+    name: ['', Validators.required],
+    amount: ['',Validators.required],
+    stagename: ['',Validators.required],
+    closedate: ['',Validators.required]
   });
 
   constructor(private apollo: Apollo, public dialogRef: MatDialogRef<OpportunityEditDialogComponent>,
@@ -90,13 +98,17 @@ export class OpportunityEditDialogComponent implements OnInit {
           result.forEach(item => {
               const opp = {
                 name: item.name,
-                amount: item.amount
+                amount: item.amount,
+                stagename: item.stagename,
+                closedate: item.closedate
               };
               this.opps.push(opp);
             });
           this.editOpportunityForm.patchValue({
             name: this.opps[0].name,
-            amount: this.opps[0].amount
+            amount: this.opps[0].amount,
+            stagename: this.opps[0].stagename,
+            closedate: this.opps[0].closedate
           });
           return result;
         })).subscribe();
@@ -118,7 +130,7 @@ export class OpportunityEditDialogComponent implements OnInit {
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     this.events.push(`${type}: ${event.value}`);
   }
-  onSaveClick() {
+  onSubmit() {
     // this.apollo.watchQuery({
     //   query: query
     // }).valueChanges.subscribe((response) => console.log(response.data))
@@ -137,12 +149,13 @@ export class OpportunityEditDialogComponent implements OnInit {
       } else {
         this.insertOpportunity.mutate({
           userId: this.profile.heroku_connect_id__c,
-          id: 'testId',
+          id: uuidv4(),
           name: this.editOpportunityForm.value.name,
           amount: this.editOpportunityForm.value.amount,
           stagename: this.editOpportunityForm.value.stagename,
           closedate: this.editOpportunityForm.value.closedate
         }).subscribe();
+        this.dialogRef.close([]);
         console.log(this.editOpportunityForm);
       }
 }}

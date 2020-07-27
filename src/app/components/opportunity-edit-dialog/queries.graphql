@@ -10,6 +10,7 @@ query opportunity($id: String!) {
         name
         amount
         stagename
+        closedate
         heroku_connect_id__c
         portal_user_heroku_connect_id__c
     }

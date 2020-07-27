@@ -583,6 +583,7 @@ export type Salesforce_Opportunity_Pk_Columns_Input = {
 export type Salesforce_Opportunity_Portal_Users = {
   __typename?: 'salesforce_opportunity_portal_users';
   amount?: Maybe<Scalars['float8']>;
+  closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -663,6 +664,7 @@ export type Salesforce_Opportunity_Portal_Users_Bool_Exp = {
   _not?: Maybe<Salesforce_Opportunity_Portal_Users_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Salesforce_Opportunity_Portal_Users_Bool_Exp>>>;
   amount?: Maybe<Float8_Comparison_Exp>;
+  closedate?: Maybe<Date_Comparison_Exp>;
   createddate?: Maybe<Timestamp_Comparison_Exp>;
   heroku_connect_id__c?: Maybe<String_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
@@ -680,6 +682,7 @@ export type Salesforce_Opportunity_Portal_Users_Inc_Input = {
 /** input type for inserting data into table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Insert_Input = {
   amount?: Maybe<Scalars['float8']>;
+  closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -693,6 +696,7 @@ export type Salesforce_Opportunity_Portal_Users_Insert_Input = {
 export type Salesforce_Opportunity_Portal_Users_Max_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_max_fields';
   amount?: Maybe<Scalars['float8']>;
+  closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -704,6 +708,7 @@ export type Salesforce_Opportunity_Portal_Users_Max_Fields = {
 /** order by max() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Max_Order_By = {
   amount?: Maybe<Order_By>;
+  closedate?: Maybe<Order_By>;
   createddate?: Maybe<Order_By>;
   heroku_connect_id__c?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
@@ -716,6 +721,7 @@ export type Salesforce_Opportunity_Portal_Users_Max_Order_By = {
 export type Salesforce_Opportunity_Portal_Users_Min_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_min_fields';
   amount?: Maybe<Scalars['float8']>;
+  closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -727,6 +733,7 @@ export type Salesforce_Opportunity_Portal_Users_Min_Fields = {
 /** order by min() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Min_Order_By = {
   amount?: Maybe<Order_By>;
+  closedate?: Maybe<Order_By>;
   createddate?: Maybe<Order_By>;
   heroku_connect_id__c?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
@@ -752,6 +759,7 @@ export type Salesforce_Opportunity_Portal_Users_Obj_Rel_Insert_Input = {
 /** ordering options when selecting data from "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Order_By = {
   amount?: Maybe<Order_By>;
+  closedate?: Maybe<Order_By>;
   createddate?: Maybe<Order_By>;
   heroku_connect_id__c?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
@@ -765,6 +773,8 @@ export type Salesforce_Opportunity_Portal_Users_Order_By = {
 export enum Salesforce_Opportunity_Portal_Users_Select_Column {
   /** column name */
   Amount = 'amount',
+  /** column name */
+  Closedate = 'closedate',
   /** column name */
   Createddate = 'createddate',
   /** column name */
@@ -782,6 +792,7 @@ export enum Salesforce_Opportunity_Portal_Users_Select_Column {
 /** input type for updating data in table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Set_Input = {
   amount?: Maybe<Scalars['float8']>;
+  closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -1575,28 +1586,6 @@ export type Timestamp_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['timestamp']>>;
 };
 
-export type Salesforce_Opportunity_Portal_UsersQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Salesforce_Opportunity_Portal_UsersQuery = (
-  { __typename?: 'query_root' }
-  & { salesforce_opportunity_portal_users: Array<(
-    { __typename?: 'salesforce_opportunity_portal_users' }
-    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'portal_user_heroku_connect_id__c'>
-  )> }
-);
-
-export type Salesforce_Opportunity_Portal_UsersSubSubscriptionVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Salesforce_Opportunity_Portal_UsersSubSubscription = (
-  { __typename?: 'subscription_root' }
-  & { salesforce_opportunity_portal_users: Array<(
-    { __typename?: 'salesforce_opportunity_portal_users' }
-    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'heroku_connect_id__c' | 'portal_user_heroku_connect_id__c'>
-  )> }
-);
-
 export type UpdateOpportunityMutationVariables = Exact<{
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
@@ -1642,7 +1631,7 @@ export type OpportunityQuery = (
   { __typename?: 'query_root' }
   & { salesforce_opportunity_portal_users: Array<(
     { __typename?: 'salesforce_opportunity_portal_users' }
-    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'heroku_connect_id__c' | 'portal_user_heroku_connect_id__c'>
+    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'closedate' | 'heroku_connect_id__c' | 'portal_user_heroku_connect_id__c'>
   )> }
 );
 
@@ -1662,6 +1651,28 @@ export type DeleteOpportunityMutation = (
   )> }
 );
 
+export type Salesforce_Opportunity_Portal_UsersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Salesforce_Opportunity_Portal_UsersQuery = (
+  { __typename?: 'query_root' }
+  & { salesforce_opportunity_portal_users: Array<(
+    { __typename?: 'salesforce_opportunity_portal_users' }
+    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'portal_user_heroku_connect_id__c'>
+  )> }
+);
+
+export type Salesforce_Opportunity_Portal_UsersSubSubscriptionVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Salesforce_Opportunity_Portal_UsersSubSubscription = (
+  { __typename?: 'subscription_root' }
+  & { salesforce_opportunity_portal_users: Array<(
+    { __typename?: 'salesforce_opportunity_portal_users' }
+    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'closedate' | 'name' | 'amount' | 'stagename' | 'heroku_connect_id__c' | 'portal_user_heroku_connect_id__c'>
+  )> }
+);
+
 export type CurrentUserQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1673,45 +1684,6 @@ export type CurrentUserQuery = (
   )> }
 );
 
-export const Salesforce_Opportunity_Portal_UsersDocument = gql`
-    query salesforce_opportunity_portal_users {
-  salesforce_opportunity_portal_users {
-    createddate
-    name
-    amount
-    stagename
-    portal_user_heroku_connect_id__c
-  }
-}
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class Salesforce_Opportunity_Portal_UsersGQL extends Apollo.Query<Salesforce_Opportunity_Portal_UsersQuery, Salesforce_Opportunity_Portal_UsersQueryVariables> {
-    document = Salesforce_Opportunity_Portal_UsersDocument;
-    
-  }
-export const Salesforce_Opportunity_Portal_UsersSubDocument = gql`
-    subscription salesforce_opportunity_portal_usersSub {
-  salesforce_opportunity_portal_users {
-    createddate
-    name
-    amount
-    stagename
-    heroku_connect_id__c
-    portal_user_heroku_connect_id__c
-  }
-}
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class Salesforce_Opportunity_Portal_UsersSubGQL extends Apollo.Subscription<Salesforce_Opportunity_Portal_UsersSubSubscription, Salesforce_Opportunity_Portal_UsersSubSubscriptionVariables> {
-    document = Salesforce_Opportunity_Portal_UsersSubDocument;
-    
-  }
 export const UpdateOpportunityDocument = gql`
     mutation updateOpportunity($id: String!, $name: String, $amount: float8!) {
   update_salesforce_opportunity_portal_users(where: {heroku_connect_id__c: {_eq: $id}}, _set: {name: $name, amount: $amount}) {
@@ -1753,6 +1725,7 @@ export const OpportunityDocument = gql`
     name
     amount
     stagename
+    closedate
     heroku_connect_id__c
     portal_user_heroku_connect_id__c
   }
@@ -1782,6 +1755,46 @@ export const DeleteOpportunityDocument = gql`
   })
   export class DeleteOpportunityGQL extends Apollo.Mutation<DeleteOpportunityMutation, DeleteOpportunityMutationVariables> {
     document = DeleteOpportunityDocument;
+    
+  }
+export const Salesforce_Opportunity_Portal_UsersDocument = gql`
+    query salesforce_opportunity_portal_users {
+  salesforce_opportunity_portal_users {
+    createddate
+    name
+    amount
+    stagename
+    portal_user_heroku_connect_id__c
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class Salesforce_Opportunity_Portal_UsersGQL extends Apollo.Query<Salesforce_Opportunity_Portal_UsersQuery, Salesforce_Opportunity_Portal_UsersQueryVariables> {
+    document = Salesforce_Opportunity_Portal_UsersDocument;
+    
+  }
+export const Salesforce_Opportunity_Portal_UsersSubDocument = gql`
+    subscription salesforce_opportunity_portal_usersSub {
+  salesforce_opportunity_portal_users {
+    createddate
+    closedate
+    name
+    amount
+    stagename
+    heroku_connect_id__c
+    portal_user_heroku_connect_id__c
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class Salesforce_Opportunity_Portal_UsersSubGQL extends Apollo.Subscription<Salesforce_Opportunity_Portal_UsersSubSubscription, Salesforce_Opportunity_Portal_UsersSubSubscriptionVariables> {
+    document = Salesforce_Opportunity_Portal_UsersSubDocument;
     
   }
 export const CurrentUserDocument = gql`

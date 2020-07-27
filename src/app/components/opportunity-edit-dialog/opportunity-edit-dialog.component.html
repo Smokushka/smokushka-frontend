@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>{{data.action}} Opportunity</h1>
 <div mat-dialog-content>
-  <form action="" [formGroup]="editOpportunityForm">
+  <form #editOpp ="ngForm" action="" [formGroup]="editOpportunityForm" (ngSubmit)="onSubmit()">
     <p >
       <mat-form-field class="input-name"  appearance="standard">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="name">
+        <input matInput placeholder="Placeholder" formControlName="name" required>
         <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
         <mat-hint>Opportunity name</mat-hint>
       </mat-form-field>
@@ -12,7 +12,7 @@
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Amount</mat-label>
-        <input matInput placeholder="Placeholder" formControlName="amount">
+        <input matInput placeholder="Placeholder" formControlName="amount" required>
         <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
         <mat-hint>Opportunity amount</mat-hint>
       </mat-form-field>
@@ -20,7 +20,7 @@
     <p>
       <mat-form-field appearance="standard">
         <mat-label>Stage</mat-label>
-        <mat-select formControlName="stagename">
+        <mat-select formControlName="stagename" required>
           <mat-option *ngFor="let stage of opportunityStages" [value]="stage.value">
             {{stage.viewValue}}
           </mat-option>
@@ -33,15 +33,16 @@
         <mat-label>Closing Date</mat-label>
         <input matInput [matDatepicker]="picker"
                (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)"
-               formControlName="closedate">
+               formControlName="closedate"
+               required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-hint>Opportunity anticipating closing date</mat-hint>
       </mat-form-field>
     </p>
-  </form>
+    <div mat-dialog-actions allign="end">
+      <button type="button" mat-button mat-dialog-close>Cancel</button>
+      <button mat-button type="submit" [disabled]="!editOpportunityForm.valid">Save</button>
     </div>
-<div mat-dialog-actions allign="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="onSaveClick()">Save</button>
+  </form>
 </div>

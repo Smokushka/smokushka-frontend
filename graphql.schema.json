@@ -4214,6 +4214,12 @@
             "deprecationReason": null
           },
           {
+            "name": "closedate",
+            "description": "column name",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "createddate",
             "description": "column name",
             "isDeprecated": false,
@@ -4260,6 +4266,16 @@
         "inputFields": [
           {
             "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "order_by",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "closedate",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -4398,6 +4414,16 @@
             "defaultValue": null
           },
           {
+            "name": "closedate",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "date_comparison_exp",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "createddate",
             "description": null,
             "type": {
@@ -4484,6 +4510,18 @@
             "type": {
               "kind": "SCALAR",
               "name": "float8",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "closedate",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "date",
               "ofType": null
             },
             "isDeprecated": false,
@@ -4839,6 +4877,18 @@
             "deprecationReason": null
           },
           {
+            "name": "closedate",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "date",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "createddate",
             "description": null,
             "args": [],
@@ -4928,6 +4978,18 @@
             "type": {
               "kind": "SCALAR",
               "name": "float8",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "closedate",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "date",
               "ofType": null
             },
             "isDeprecated": false,
@@ -7455,6 +7517,16 @@
             "defaultValue": null
           },
           {
+            "name": "closedate",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "date",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "createddate",
             "description": null,
             "type": {
@@ -7759,6 +7831,16 @@
             "type": {
               "kind": "SCALAR",
               "name": "float8",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "closedate",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "date",
               "ofType": null
             },
             "defaultValue": null
@@ -9610,6 +9692,16 @@
             "defaultValue": null
           },
           {
+            "name": "closedate",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "order_by",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "createddate",
             "description": null,
             "type": {
@@ -9682,6 +9774,16 @@
         "inputFields": [
           {
             "name": "amount",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "order_by",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "closedate",
             "description": null,
             "type": {
               "kind": "ENUM",
