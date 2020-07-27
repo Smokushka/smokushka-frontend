@@ -11,6 +11,8 @@ import { HttpHeaders } from '@angular/common/http';
 import { getOperationAST } from 'graphql';
 import { map, mapTo, mergeMap, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { FOCUS_MONITOR_DEFAULT_OPTIONS } from '@angular/cdk/a11y';
+import { DefaultOptions } from 'apollo-client';
 
 // const uri = 'https://smokushka.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here
 // const wsUri = 'wss://smokushka.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here
@@ -118,7 +120,27 @@ constructor (private httpLink: HttpLink, public auth: AuthService, private apoll
       uri: wsUri,
       options
     });
+    // cache definition
 
+    // const cache = new InMemoryCache({
+    //   dataIdFromObject: object => {
+    //     switch (object.__typename) {
+    //       case 'salesforce_opportunity': return object._; // use `key` as the primary key
+    //       case 'salesforce_portal_user__c': return object.heroku_connect_id__c; // use `blah` as the primary key
+    //       default: return object.id || object.id; // fall back to `id` and `_id` for all other types
+    //     }
+    //   }
+    // });
+    const defaultOptions: DefaultOptions = {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'ignore',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+    }
     // create Apollo
     console.log(ws);
     console.log(http);
@@ -131,7 +153,8 @@ constructor (private httpLink: HttpLink, public auth: AuthService, private apoll
         ws,
         http,
       ),
-      cache: new InMemoryCache()
+      cache: new InMemoryCache(),
+      // defaultOptions
     });
 }
 }

@@ -138,13 +138,16 @@ export class OpportunityEditDialogComponent implements OnInit {
       this.updateOpportunity.mutate({
           id: this.data.id,
           name: this.editOpportunityForm.value.name,
-          amount: this.editOpportunityForm.value.amount
+          amount: this.editOpportunityForm.value.amount,
+          stagename: this.editOpportunityForm.value.stagename,
+          closedate: this.editOpportunityForm.value.closedate
         }).
         pipe(
           map(result => console.log(result))).
           subscribe();
         console.log('click');
         console.log(this.editOpportunityForm.value);
+        this.dialogRef.close([]);
 
       } else {
         this.insertOpportunity.mutate({

@@ -1,4 +1,4 @@
-mutation updateOpportunity($id: String!, $name: String, $amount: float8!){
+mutation updateOpportunity($id: String!, $name: String, $amount: float8!, $stagename: String!,$closedate: date!){
     update_salesforce_opportunity_portal_users (
         where: {
             heroku_connect_id__c : {
@@ -8,8 +8,11 @@ mutation updateOpportunity($id: String!, $name: String, $amount: float8!){
     _set: {
         name: $name
         amount: $amount
+        stagename: $stagename
+        closedate: $closedate
     }) {
         returning {
+        id
         name
         amount
         }

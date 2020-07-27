@@ -586,6 +586,7 @@ export type Salesforce_Opportunity_Portal_Users = {
   closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   /** An object relationship */
   portal_user__r?: Maybe<Salesforce_Portal_User__C>;
@@ -648,11 +649,13 @@ export type Salesforce_Opportunity_Portal_Users_Arr_Rel_Insert_Input = {
 export type Salesforce_Opportunity_Portal_Users_Avg_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_avg_fields';
   amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by avg() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Avg_Order_By = {
   amount?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /**
@@ -667,6 +670,7 @@ export type Salesforce_Opportunity_Portal_Users_Bool_Exp = {
   closedate?: Maybe<Date_Comparison_Exp>;
   createddate?: Maybe<Timestamp_Comparison_Exp>;
   heroku_connect_id__c?: Maybe<String_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
   portal_user__r?: Maybe<Salesforce_Portal_User__C_Bool_Exp>;
   portal_user_heroku_connect_id__c?: Maybe<String_Comparison_Exp>;
@@ -677,6 +681,7 @@ export type Salesforce_Opportunity_Portal_Users_Bool_Exp = {
 /** input type for incrementing integer column in table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Inc_Input = {
   amount?: Maybe<Scalars['float8']>;
+  id?: Maybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "salesforce.opportunity_portal_users" */
@@ -685,6 +690,7 @@ export type Salesforce_Opportunity_Portal_Users_Insert_Input = {
   closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   portal_user__r?: Maybe<Salesforce_Portal_User__C_Obj_Rel_Insert_Input>;
   portal_user_heroku_connect_id__c?: Maybe<Scalars['String']>;
@@ -699,6 +705,7 @@ export type Salesforce_Opportunity_Portal_Users_Max_Fields = {
   closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   portal_user_heroku_connect_id__c?: Maybe<Scalars['String']>;
   sfid?: Maybe<Scalars['String']>;
@@ -711,6 +718,7 @@ export type Salesforce_Opportunity_Portal_Users_Max_Order_By = {
   closedate?: Maybe<Order_By>;
   createddate?: Maybe<Order_By>;
   heroku_connect_id__c?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   portal_user_heroku_connect_id__c?: Maybe<Order_By>;
   sfid?: Maybe<Order_By>;
@@ -724,6 +732,7 @@ export type Salesforce_Opportunity_Portal_Users_Min_Fields = {
   closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   portal_user_heroku_connect_id__c?: Maybe<Scalars['String']>;
   sfid?: Maybe<Scalars['String']>;
@@ -736,6 +745,7 @@ export type Salesforce_Opportunity_Portal_Users_Min_Order_By = {
   closedate?: Maybe<Order_By>;
   createddate?: Maybe<Order_By>;
   heroku_connect_id__c?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   portal_user_heroku_connect_id__c?: Maybe<Order_By>;
   sfid?: Maybe<Order_By>;
@@ -762,6 +772,7 @@ export type Salesforce_Opportunity_Portal_Users_Order_By = {
   closedate?: Maybe<Order_By>;
   createddate?: Maybe<Order_By>;
   heroku_connect_id__c?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   portal_user__r?: Maybe<Salesforce_Portal_User__C_Order_By>;
   portal_user_heroku_connect_id__c?: Maybe<Order_By>;
@@ -780,6 +791,8 @@ export enum Salesforce_Opportunity_Portal_Users_Select_Column {
   /** column name */
   HerokuConnectIdC = 'heroku_connect_id__c',
   /** column name */
+  Id = 'id',
+  /** column name */
   Name = 'name',
   /** column name */
   PortalUserHerokuConnectIdC = 'portal_user_heroku_connect_id__c',
@@ -795,6 +808,7 @@ export type Salesforce_Opportunity_Portal_Users_Set_Input = {
   closedate?: Maybe<Scalars['date']>;
   createddate?: Maybe<Scalars['timestamp']>;
   heroku_connect_id__c?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   portal_user_heroku_connect_id__c?: Maybe<Scalars['String']>;
   sfid?: Maybe<Scalars['String']>;
@@ -805,77 +819,91 @@ export type Salesforce_Opportunity_Portal_Users_Set_Input = {
 export type Salesforce_Opportunity_Portal_Users_Stddev_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_stddev_fields';
   amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Stddev_Order_By = {
   amount?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Salesforce_Opportunity_Portal_Users_Stddev_Pop_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_stddev_pop_fields';
   amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_pop() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Stddev_Pop_Order_By = {
   amount?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Salesforce_Opportunity_Portal_Users_Stddev_Samp_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_stddev_samp_fields';
   amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by stddev_samp() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Stddev_Samp_Order_By = {
   amount?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /** aggregate sum on columns */
 export type Salesforce_Opportunity_Portal_Users_Sum_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_sum_fields';
   amount?: Maybe<Scalars['float8']>;
+  id?: Maybe<Scalars['Int']>;
 };
 
 /** order by sum() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Sum_Order_By = {
   amount?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /** aggregate var_pop on columns */
 export type Salesforce_Opportunity_Portal_Users_Var_Pop_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_var_pop_fields';
   amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_pop() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Var_Pop_Order_By = {
   amount?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /** aggregate var_samp on columns */
 export type Salesforce_Opportunity_Portal_Users_Var_Samp_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_var_samp_fields';
   amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by var_samp() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Var_Samp_Order_By = {
   amount?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /** aggregate variance on columns */
 export type Salesforce_Opportunity_Portal_Users_Variance_Fields = {
   __typename?: 'salesforce_opportunity_portal_users_variance_fields';
   amount?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
 };
 
 /** order by variance() on columns of table "salesforce.opportunity_portal_users" */
 export type Salesforce_Opportunity_Portal_Users_Variance_Order_By = {
   amount?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
 };
 
 /** select columns of table "salesforce.opportunity" */
@@ -1590,6 +1618,8 @@ export type UpdateOpportunityMutationVariables = Exact<{
   id: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   amount: Scalars['float8'];
+  stagename: Scalars['String'];
+  closedate: Scalars['date'];
 }>;
 
 
@@ -1599,7 +1629,7 @@ export type UpdateOpportunityMutation = (
     { __typename?: 'salesforce_opportunity_portal_users_mutation_response' }
     & { returning: Array<(
       { __typename?: 'salesforce_opportunity_portal_users' }
-      & Pick<Salesforce_Opportunity_Portal_Users, 'name' | 'amount'>
+      & Pick<Salesforce_Opportunity_Portal_Users, 'id' | 'name' | 'amount'>
     )> }
   )> }
 );
@@ -1631,7 +1661,7 @@ export type OpportunityQuery = (
   { __typename?: 'query_root' }
   & { salesforce_opportunity_portal_users: Array<(
     { __typename?: 'salesforce_opportunity_portal_users' }
-    & Pick<Salesforce_Opportunity_Portal_Users, 'createddate' | 'name' | 'amount' | 'stagename' | 'closedate' | 'heroku_connect_id__c' | 'portal_user_heroku_connect_id__c'>
+    & Pick<Salesforce_Opportunity_Portal_Users, 'id' | 'createddate' | 'name' | 'amount' | 'stagename' | 'closedate' | 'heroku_connect_id__c' | 'portal_user_heroku_connect_id__c'>
   )> }
 );
 
@@ -1685,9 +1715,10 @@ export type CurrentUserQuery = (
 );
 
 export const UpdateOpportunityDocument = gql`
-    mutation updateOpportunity($id: String!, $name: String, $amount: float8!) {
-  update_salesforce_opportunity_portal_users(where: {heroku_connect_id__c: {_eq: $id}}, _set: {name: $name, amount: $amount}) {
+    mutation updateOpportunity($id: String!, $name: String, $amount: float8!, $stagename: String!, $closedate: date!) {
+  update_salesforce_opportunity_portal_users(where: {heroku_connect_id__c: {_eq: $id}}, _set: {name: $name, amount: $amount, stagename: $stagename, closedate: $closedate}) {
     returning {
+      id
       name
       amount
     }
@@ -1721,6 +1752,7 @@ export const InsertOpportunityDocument = gql`
 export const OpportunityDocument = gql`
     query opportunity($id: String!) {
   salesforce_opportunity_portal_users(where: {heroku_connect_id__c: {_eq: $id}}) {
+    id
     createddate
     name
     amount
