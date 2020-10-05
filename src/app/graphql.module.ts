@@ -111,8 +111,8 @@ constructor (private httpLink: HttpLink, public auth: AuthService, private apoll
     )
   
   function createApollo(options: {}) {
-    const wsUri = 'wss://smokushka.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here    
-    const uri = 'https://smokushka.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here
+    const wsUri = 'wss://fab-poc-hasura.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here    
+    const uri = 'https://fab-poc-hasura.herokuapp.com/v1/graphql'; // <-- add the URL of the GraphQL server here
     // const headers = new HttpHeaders();
     const http = httpLink.create({ uri });
 
