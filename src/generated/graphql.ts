@@ -1710,7 +1710,7 @@ export type CurrentUserQuery = (
   { __typename?: 'query_root' }
   & { salesforce_portal_user__c: Array<(
     { __typename?: 'salesforce_portal_user__c' }
-    & Pick<Salesforce_Portal_User__C, 'name' | 'email__c' | 'heroku_connect_id__c'>
+    & Pick<Salesforce_Portal_User__C, 'name' | 'heroku_connect_id__c'>
   )> }
 );
 
@@ -1833,7 +1833,6 @@ export const CurrentUserDocument = gql`
     query currentUser {
   salesforce_portal_user__c {
     name
-    email__c
     heroku_connect_id__c
   }
 }
