@@ -15,7 +15,7 @@ export class AuthService {
       domain: "smokushka.us.auth0.com",
       client_id: "UGWtP945QzciiEPO9nuDSdwZgFYWvqrB",
       redirect_uri: `${window.location.origin}`,
-      audience: "https://smokushka.herokuapp.com/v1/graphql"
+      audience: "https://fab-poc-hasura.herokuapp.com/v1/graphql"
     })
   ) as Observable<Auth0Client>).pipe(
     shareReplay(1), // Every subscription receives the same shared value
