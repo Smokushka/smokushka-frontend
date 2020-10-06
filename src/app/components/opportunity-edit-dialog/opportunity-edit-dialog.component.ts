@@ -27,7 +27,6 @@ export const query = gql`
 `;
 export interface CurrentUser {
   name: string,
-  email: string,
   heroku_connect_id__c: string
 }
 
