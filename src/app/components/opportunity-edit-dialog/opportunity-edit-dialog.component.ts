@@ -70,7 +70,6 @@ export class OpportunityEditDialogComponent implements OnInit {
   queryRef: QueryRef<any>;
   profile: CurrentUser = {
     name: '',
-    email: '',
     heroku_connect_id__c: ''
   };
   editOpportunityForm = this.fb.group({
@@ -120,7 +119,6 @@ export class OpportunityEditDialogComponent implements OnInit {
       map(result => {
         this.profile.name = result[0].name;
         this.profile.heroku_connect_id__c = result[0].heroku_connect_id__c;
-        this.profile.email = result[0].email__c;
         console.log(this.profile);
       })).subscribe();
       }
