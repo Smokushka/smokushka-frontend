@@ -1,7 +1,6 @@
 query currentUser{
   salesforce_portal_user__c {
     name
-    email__c
     heroku_connect_id__c
   }
 }
