@@ -37,7 +37,7 @@
     "apollo-link": "^1.2.11",
     "apollo-link-context": "^1.0.20",
     "apollo-link-ws": "^1.0.20",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.0",
     "rxjs": "~6.5.5",
